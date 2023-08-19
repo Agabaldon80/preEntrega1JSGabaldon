@@ -1,75 +1,76 @@
-/* Algoritmo para calcular edad promedio de personas registradas */
+/* Algoritmo para nota final de estudiantes ingresados */
 
-alert("Bienvenido a su simulador. Aquí podremos calcular el promedio de edad de las 4 primeras personas que se registren. Haga por favor click en 'aceptar' para continuar y siga las instrucciones");
-
-let edad01 = parseInt(prompt("Usted es la primera persona, ingrese su edad: "));
-
-let edad02 = parseInt(prompt("Usted es la segunda persona, ingrese su edad: "));
-
-let edad03 = parseInt(prompt("Usted es la tercera persona, ingrese su edad: "));
-
-let edad04 = parseInt(prompt("Usted es la cuarta persona, ingrese su edad: "));
-
-alert("Se han completado los ingresos. Haga click en 'aceptar' para conocer los resultado");
-
-let sumaEdad = edad01 + edad02 + edad03 + edad04;
-
-alert(`El total de años de las 4 personas es ${sumaEdad} años`);
-
-let promedioEdad = sumaEdad / 4;
-
-alert(`El promedio de edad de las cuatro personas es ${promedioEdad} años`);
-
-alert("Gracias por usar su simulador. Vuelva pronto");
-
-/* Algoritmo para nota final de alumnos ingresados */
-
-alert("Bienvenido a su simulador. Hoy le proponemos calcular la nota final de las cuatro evaluaciones realizadas por su alumno. Haga por favor click en 'aceptar' para continuar y siga las instrucciones");
-
-alert("Le recordamos que el sistema de notación es de 1 punto hasta 20 puntos y que para aprobar, el alumno debe obtener un promedio mínimo de 12 puntos. Si el alumno obtiene un promedio de 8 a 11 puntos, tiene derecho a presentar un examen de recuperación y si el promedio es inferior a 8 puntos, el alumno está reprobado. Haga click en 'aceptar' para continuar")
-
-let alumno = prompt("Ingrese el nombre del alumno");
-
-let nota01 = parseInt(prompt("Ingrese la primera nota del alumno: "));
-
-let nota02 = parseInt(prompt("Ingrese la segunda nota del alumno: "));
-
-let nota03 = parseInt(prompt("Ingrese la tercera nota del alumno: "));
-
-let nota04 = parseInt(prompt("Ingrese la cuarta nota del alumno: "));
-
-alert("Se han completado los ingresos. Estamos calculando la nota final. Haga click en 'aceptar' para conocer el resultado")
-
-let sumaNota = nota01 + nota02 + nota03 + nota04
-
-let promedioNota = sumaNota / 4
-if (promedioNota < 8) {
-    alert(`El promedio de ${alumno} es ${promedioNota} puntos y está reprobado`)
-} else if (promedioNota < 12) {
-    alert(`El promedio de ${alumno} es ${promedioNota} puntos y puede presentar examen de recuperación`)
-} else {
-    alert(`El promedio de ${alumno} es ${promedioNota} puntos y está aprobado`)
-}
-
-alert("Gracias por usar su simulador. Vuelva pronto")
-
-
-/* Algoritmo para que el usuario escoja dos números y mostrar la progresión del primero al segundo según la cantidad de saltos que el usuario elija dar en ese rango */
-
-alert("Bienvenido a su calculador de números dentro de un rango. Este simulador le permite ingresar un número de inicio y de fin, y  obtener el listado de los números según vayan aumentando de acuerdo a un salto establecido por el usuario");
-
-alert("Todos los números debe ser positivos, y el de inicio debe ser menor al de fin, sino, obtendrá un error");
-
-let num1 = parseInt(prompt("Ingrese el número de inicio:"));
-
-let num2 = parseInt(prompt("Ingrese el número de fin:"));
-
-let num3 = parseInt(prompt("Ingrese el número de salto:"));
-
-for (let i = num1; i <= num2; i = i + num3) {
-
-    alert(`${i}`);
-}
-
-alert("El simulador ha concluido, puede comenzar de nuevo si lo desea. Para ello oprima el boton 'cargar página de nuevo'. Gracias por usar nuestro calculador.")
-    
+alert(
+    "Bienvenido al calculador de notas Eleusis, el cual le permite determinar el promedio de los estudiantes en su curso y si el mismo ha obtenido una mención. Para conocer el sistema de notación y las posibles menciones, haga por favor click en 'aceptar'"
+  );
+  
+  alert(
+    "El sistema de notación es de 1 hasta 20 puntos. Si el promedio es de 18, 19 o 20 puntos, el curso logra la mención 'Sobresaliente'; de 16 0 17 puntos, logra la mención 'Excelente'; de 14 o 15 puntos logra la mención 'Correcto'. Una nota menor a 14 no obtiene mención. Haga click en 'aceptar' para continuar y siga las instrucciones"
+  );
+  
+  function promedioNotas() {
+    let curso = prompt(
+      "Ingrese el nombre del curso cuyo promedio desea calcular"
+    );
+  
+    let estudiantes = parseInt(
+      prompt(
+        `Ingrese la cantidad de estudiantes en el curso ${curso} y haremos el promedio de sus notas. Atención: se espera un numero entero superior a 0`
+      )
+    );
+  
+    let sumaNotas = 0;
+  
+    while (estudiantes < 1 || isNaN(estudiantes)) {
+      estudiantes = parseInt(
+        prompt(
+          `Ingrese la cantidad de estudiantes en el curso ${curso} y haremos el promedio de sus notas. Atención: se espera un numero entero superior a 0`
+        )
+      );
+    }
+  
+    for (let i = 1; i <= estudiantes; i++) {
+      let nota = parseInt(
+        prompt(
+          `Ingrese la nota del estudiante número ${i}. Recuerde que ésta debe ser un número entero entre 1 y 20`
+        )
+      );
+  
+      while (nota < 1 || nota > 20 || isNaN(nota)) {
+        nota = parseInt(
+          prompt(
+            `Ingrese la nota del estudiante número ${i}. Recuerde que ésta debe ser un número entero entre 1 y 20`
+          )
+        );
+      }
+  
+      sumaNotas += nota;
+    }
+  
+    const promedioNota = sumaNotas / estudiantes;
+  
+    if (promedioNota <= 20 && promedioNota >= 18) {
+      alert(
+        `El promedio del curso ${curso} es ${promedioNota} puntos y logra la mención 'Sobresaliente'`
+      );
+    } else if (promedioNota <= 17 && promedioNota >= 16) {
+      alert(
+        `El promedio del curso ${curso} es ${promedioNota} puntos y logra la mención 'Excelente'`
+      );
+    } else if (promedioNota <= 15 && promedioNota >= 14) {
+      alert(
+        `El promedio del curso ${curso} es ${promedioNota} puntos y logra la mención 'Correcto'`
+      );
+    } else {
+      alert(
+        `El promedio del curso ${curso} es ${promedioNota} puntos y no obtiene mención`
+      );
+    }
+  
+    return promedioNotas;
+  }
+  
+  promedioNotas();
+  alert("Gracias por usar el calculador de notas Eleusis. Vuelva pronto");
+  
+  
